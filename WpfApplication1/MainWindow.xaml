@@ -1,0 +1,129 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:Converters"
+        xmlns:templates="clr-namespace:TemplateSelectors"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Window.Resources>
+        <converters:DateTimeConverter x:Key="DateTimeConverter"/>
+        <DataTemplate x:Key="IncomingMessageTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Timestamp, Converter={StaticResource DateTimeConverter}}" TextAlignment="Right"/>
+                <TextBlock Grid.Column="1" Margin="10,0,0,0" TextWrapping="Wrap" Cursor="IBeam">
+                    <Span Foreground="Green">
+                        <Run Text="&lt;"/><!--
+                        --><Run Text="{Binding User.Name}"/><!--
+                        --><Run Text="&gt; "/>
+                    </Span><!--
+                    --><Run Text="{Binding Content}"/>
+                </TextBlock>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="OutgoingMessageTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Timestamp, Converter={StaticResource DateTimeConverter}}" TextAlignment="Right"/>
+                <TextBlock Grid.Column="1" Margin="10,0,0,0" TextWrapping="Wrap" Cursor="IBeam">
+                    <Span Foreground="Blue">
+                        <Run Text="&lt;"/><!--
+                        --><Run Text="{Binding User.Name}"/><!--
+                        --><Run Text="&gt; "/>
+                    </Span><!--
+                    --><Run Text="{Binding Content}"/>
+                </TextBlock>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="PartMessageTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Timestamp, Converter={StaticResource DateTimeConverter}}" TextAlignment="Right"/>
+                <TextBlock Grid.Column="1" Margin="10,0,0,0" TextWrapping="Wrap" Cursor="IBeam" Foreground="Blue">
+                    <Run Text="{Binding User.Name}"/><!--
+                    --><Run Text=" parts."/>
+                </TextBlock>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="JoinMessageTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Timestamp, Converter={StaticResource DateTimeConverter}}" TextAlignment="Right"/>
+                <TextBlock Grid.Column="1" Margin="10,0,0,0" TextWrapping="Wrap" Cursor="IBeam" Foreground="Blue">
+                    <Run Text="{Binding User.Name}"/><!--
+                    --><Run Text=" joins."/>
+                </TextBlock>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="NoticeMessageTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Timestamp, Converter={StaticResource DateTimeConverter}}" TextAlignment="Right"/>
+                <TextBlock Grid.Column="1" Margin="10,0,0,0" TextWrapping="Wrap" Cursor="IBeam">
+                    <Span Foreground="Brown">
+                        <Run Text="&lt;"/><!--
+                        --><Run Text="{Binding User.Name}"/><!--
+                        --><Run Text=" whispers&gt; "/>
+                    </Span><!--
+                    --><Run Text="{Binding Content}"/>
+                </TextBlock>
+            </Grid>
+        </DataTemplate>        
+        <templates:MessageTemplateSelector IncomingMessageTemplate="{StaticResource IncomingMessageTemplate}"
+                                           OutgoingMessageTemplate="{StaticResource OutgoingMessageTemplate}"
+                                           PartMessageTemplate="{StaticResource PartMessageTemplate}"
+                                           JoinMessageTemplate="{StaticResource JoinMessageTemplate}"
+                                           NoticeMessageTemplate="{StaticResource NoticeMessageTemplate}" x:Key="MessageTemplateSelector"/>
+    </Window.Resources>
+    <Grid>
+        <TabControl ItemsSource="{Binding Channels}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Key}"/>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <ListBox ItemsSource="{Binding Value}" AlternationCount="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemTemplateSelector="{StaticResource MessageTemplateSelector}">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="AliceBlue"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Grid Background="{TemplateBinding Background}">
+                                                <ContentPresenter />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+    </Grid>
+</Window>
