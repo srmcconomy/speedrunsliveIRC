@@ -35,6 +35,9 @@ namespace WpfApplication1
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await IRC.Connect("irc2.speedrunslive.com");
+            await IRC.Send("NICK mrfakeman\r\n");
+            await IRC.Send("User mrfakeman mrfakeman mrfakeman :mrfakeman\r\n");
+
             IRCPoller.Start();
         }
     }

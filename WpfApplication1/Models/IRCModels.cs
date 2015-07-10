@@ -43,16 +43,15 @@ namespace IRCModels
 
         public static Message ParseString(String str)
         {
-            Regex r = new Regex(@"^(?::([^\s]+)(?:![^\s]+)?\s+)?(\d\d\d|[A-Za-z]+)((?:\s[^\s:]+)*)(?:\s:(.*))?");
+            Regex r = new Regex(@"^(?::([^\s]+)(?:![^\s]+)?\s+)?(\d\d\d|[A-Za-z]+)((?:\s[^\s:]+)+)?(?:\s:(.*))?");
             var groups = r.Match(str).Groups;
 
             Message msg = new Message();
             msg.s = str;
-            var i = 1;
-            if (str[0] == ':') msg.user = groups[i++].Value;
-            msg.command = groups[i++].Value;
-            msg.parameters = groups[i++].Value.Substring(1).Split(' ').ToList();
-            msg.trail = groups[i++].Value;
+            msg.user = groups[1].Value;
+            msg.command = groups[2].Value;
+            if (groups[3].Success) msg.parameters = groups[3].Value.Substring(1).Split(' ').ToList();
+            msg.trail = groups[4].Value;
             return msg;
         }
 

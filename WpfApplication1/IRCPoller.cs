@@ -44,7 +44,7 @@ public class IRCPoller
         switch (msg.Command)
         {
             case ("PING"):
-                await irc.Send("PONG " + msg.Trail + "/r/n");
+                await irc.Send("PONG :" + msg.Trail + "/r/n");
                 break;
         }
     }
