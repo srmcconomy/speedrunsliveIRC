@@ -24,6 +24,7 @@ namespace WpfApplication1
     {
         public Window1()
         {
+            DataContext = UserData.Instance;
             InitializeComponent();
             Loaded += Window1_Loaded;
         }
@@ -33,7 +34,7 @@ namespace WpfApplication1
             var client = new HttpClient();
             var _ = await client.GetAsync("http://api.speedrunslive.com/races");
             var __ = await _.Content.ReadAsStringAsync();
-            var ___ = JObject.Parse(__).ToObject<SRL>();
+            var ___ = JObject.Parse(__).SelectToken("races").ToObject<List<Race>>();
         }
     }
 }

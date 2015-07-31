@@ -1,0 +1,66 @@
+﻿<Page x:Class="WpfApplication1.PlayPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Title="PlayPage"
+      d:DesignHeight="300"
+      d:DesignWidth="300"
+      mc:Ignorable="d">
+    <Page.Resources />
+
+    <Grid>
+        <ListBox ItemsSource="{Binding Races}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border VerticalAlignment="Top"
+                            Background="#111111"
+                            BorderBrush="Silver"
+                            BorderThickness="0,0,0,2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Ellipse Grid.RowSpan="2"
+                                     Width="50"
+                                     Height="50"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Fill="Goldenrod" />
+                            <Border Grid.RowSpan="2"
+                                    Width="48"
+                                    Height="48"
+                                    Margin="5"
+                                    Background="Black">
+                                <Border.Clip>
+                                    <EllipseGeometry Center="24,24"
+                                                     RadiusX="24"
+                                                     RadiusY="24" />
+                                </Border.Clip>
+                                <Image Source="pack://application:,,,/Assets/oot.png" />
+                            </Border>
+                            <TextBlock Grid.Column="1"
+                                       Margin="10,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource Header}"
+                                       Text="{Binding Goal,
+                                                      FallbackValue=BINGO!}" />
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="1"
+                                       Margin="10,0,0,0"
+                                       Style="{StaticResource Subheader}">
+                                <Run Text="{Binding NumEntrants, FallbackValue=0}" />
+                                <Run Text="entrants" />
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>

@@ -79,13 +79,25 @@
     <Compile Include="Converters.cs" />
     <Compile Include="IRC.cs" />
     <Compile Include="IRCPoller.cs" />
-    <Compile Include="Models\IRCModels.cs" />
+    <Compile Include="Models\IRCModels\Message.cs" />
     <Compile Include="Models\ModelBase.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\IRCModels\User.cs" />
+    <Compile Include="Models\SRLModels\Game.cs" />
+    <Compile Include="Models\SRLModels\Race.cs" />
+    <Compile Include="PlayPage.xaml.cs">
+      <DependentUpon>PlayPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RaceBotParser.cs" />
+    <Compile Include="RacePage.xaml.cs">
+      <DependentUpon>RacePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TemplateSelectors.cs" />
+    <Compile Include="UserData.cs" />
+    <Compile Include="Utilities\ObservableDictionary.cs" />
     <Compile Include="ViewModels\MainView.cs" />
-    <Compile Include="Models\SRLModels.cs" />
+    <Compile Include="Models\SRLModels\Entrant.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="ViewModels\RaceViewModel.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -93,7 +105,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dictionary1.xaml">
+    <Page Include="Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,6 +121,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PlayPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RacePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,6 +177,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\oot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

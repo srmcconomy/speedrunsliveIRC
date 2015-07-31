@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WpfApplication1;
-using WpfApplication1.Models;
 using WpfApplication1.ViewModels;
 
 namespace ViewModels

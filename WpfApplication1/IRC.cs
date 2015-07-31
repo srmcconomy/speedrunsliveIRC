@@ -71,7 +71,6 @@ public class IRC
         if (ss.Count > 1)
         {
             line = ss[0];
-            Console.WriteLine("POPP");
             ss.RemoveAt(0);
             ss.RemoveAt(0);
             var msg = Message.ParseString(line);
@@ -95,6 +94,7 @@ public class IRC
     }
     public async Task Send(String str)
     {
-        await s.SendTaskAsync(Encoding.UTF8.GetBytes(str));
+        s.Send(Encoding.UTF8.GetBytes(str));
+        //await s.SendTaskAsync(Encoding.UTF8.GetBytes(str));
     }
 }
