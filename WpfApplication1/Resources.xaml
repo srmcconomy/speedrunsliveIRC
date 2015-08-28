@@ -1,4 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="IncomingMessageBrush" Color="Green" />
+    <SolidColorBrush x:Key="NoticeMessageBrush" Color="Maroon" />
+    <SolidColorBrush x:Key="PartMessageBrush" Color="Blue" />
+    <SolidColorBrush x:Key="JoinMessageBrush" Color="Blue" />
+    <SolidColorBrush x:Key="OutgoingMessageBrush" Color="Blue" />
+    <SolidColorBrush x:Key="TimestampBrush" Color="Gray" />
+
     <Style x:Key="Header" TargetType="TextBlock">
         <Setter Property="FontSize" Value="24" />
         <Setter Property="Foreground" Value="Goldenrod" />

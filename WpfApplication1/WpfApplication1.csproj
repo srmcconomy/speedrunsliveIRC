@@ -73,9 +73,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ChatPane.xaml.cs">
-      <DependentUpon>ChatPane.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="Converters.cs" />
     <Compile Include="IRC.cs" />
     <Compile Include="IRCPoller.cs" />
@@ -84,32 +82,37 @@
     <Compile Include="Models\IRCModels\User.cs" />
     <Compile Include="Models\SRLModels\Game.cs" />
     <Compile Include="Models\SRLModels\Race.cs" />
-    <Compile Include="PlayPage.xaml.cs">
+    <Compile Include="Views\ChatTab.xaml.cs">
+      <DependentUpon>ChatTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ObservableCollection.cs" />
+    <Compile Include="Views\PlayPage.xaml.cs">
       <DependentUpon>PlayPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="RaceBotParser.cs" />
-    <Compile Include="RacePage.xaml.cs">
+    <Compile Include="Views\RacePage.xaml.cs">
       <DependentUpon>RacePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TemplateSelectors.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="Utilities\ObservableDictionary.cs" />
+    <Compile Include="ViewModels\ChannelViewModel.cs" />
     <Compile Include="ViewModels\MainView.cs" />
     <Compile Include="Models\SRLModels\Entrant.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\RaceViewModel.cs" />
-    <Compile Include="Window1.xaml.cs">
+    <Compile Include="Views\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
-    <Page Include="ChatPane.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\ChatTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -117,19 +120,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PlayPage.xaml">
+    <Page Include="Views\PlayPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RacePage.xaml">
+    <Page Include="Views\RacePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window1.xaml">
+    <Page Include="Views\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

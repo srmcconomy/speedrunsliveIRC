@@ -43,7 +43,7 @@ namespace IRCModels
 
         public static Message ParseString(String str)
         {
-            Regex r = new Regex(@"^(?::([^\s]+)(?:![^\s]+)?\s+)?(\d\d\d|[A-Za-z]+)((?:\s[^\s:]+)+)?(?:\s:(.*))?");
+            Regex r = new Regex(@"^(?::([^\s!:]+)(?:![^\s]+)?\s+)?(\d\d\d|[A-Za-z]+)((?:\s[^\s:]+)+)?(?:\s:(.*))?");
             var groups = r.Match(str).Groups;
 
             Message msg = new Message();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApplication1.ViewModels
+namespace ViewModels
 {
     class RaceViewModel
     {

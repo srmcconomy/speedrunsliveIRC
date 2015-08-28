@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IRCModels
 {
-    class User : ModelBase
+    public class User : ModelBase
     {
         public enum UserType { Normal, Voice, HalfOp, Operator };
 

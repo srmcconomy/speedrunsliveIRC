@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApplication1.ViewModels
+namespace ViewModels
 {
-    class MessageViewModel : ModelBase
+    public class MessageViewModel : ModelBase
     {
         DateTime timestamp;
         public DateTime Timestamp

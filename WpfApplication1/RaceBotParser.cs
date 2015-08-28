@@ -16,7 +16,7 @@ namespace WpfApplication1
         Regex Forfeit = new Regex(@"^([^\s]+) has forfeited from the race\.\s*$");
         Regex PlayerComment = new Regex(@"^\.comment (.*)\s*$");
         Regex CommentAdded = new Regex(@"^Comment added\.\s*$");
-        Regex PlayerComment = new Regex(@"^\.setstream ([^\s]+)\s*$");
+        Regex SetStream = new Regex(@"^\.setstream ([^\s]+)\s*$");
         Regex StreamSet = new Regex(@"^Stream set\.\s*$");
         Regex PlayerFinished = new Regex(@"^([^\s]+) has finished in (\d+).. place with a time of ([^\s]+)\.\s*$");
         Regex RaceRecorded = new Regex(@"^Race recorded: (.*)\s*$");
